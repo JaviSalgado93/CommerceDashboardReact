@@ -8,8 +8,9 @@ export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<UserInfo | null>(null);
   const [token, setToken] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
+  // Al montar, recupera token del localStorage
   useEffect(() => {
     const storedToken = localStorage.getItem('accessToken');
     const storedUser = authService.getStoredUser();
@@ -18,6 +19,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       setToken(storedToken);
       setUser(storedUser);
     }
+    
+    setIsLoading(false); // Indica que ya terminó la carga inicial
   }, []);
 
   const login = async (username: string, password: string) => {
