@@ -100,7 +100,7 @@ export const MerchantForm: React.FC<MerchantFormProps> = ({
     if (!formData.departmentName) {
       newErrors.departmentName = 'Departamento es obligatorio';
     }
-    if (!formData.municipalityId) {
+    if (formData.municipalityId === 0) {
       newErrors.municipalityId = 'Ciudad es obligatoria';
     }
 
@@ -220,7 +220,7 @@ export const MerchantForm: React.FC<MerchantFormProps> = ({
               </label>
               <select
                 name="municipalityId"
-                value={formData.municipalityId}
+                value={formData.municipalityId.toString()}
                 onChange={handleChange}
                 className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary transition ${
                   errors.municipalityId ? 'border-red-500' : 'border-gray-300'
