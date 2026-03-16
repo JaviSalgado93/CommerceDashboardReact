@@ -4,6 +4,8 @@ import { AuthProvider } from './context/AuthContext'
 import { ProtectedRoute } from './components/Auth/ProtectedRoute'
 import { LoginPage } from './pages/LoginPage'
 import { HomePage } from './pages/HomePage'
+import { FormPage } from './pages/FormPage'
+import { DetailsPage } from './pages/DetailsPage'
 import { Toaster } from 'react-hot-toast'
 
 const App: React.FC = () => {
@@ -17,6 +19,30 @@ const App: React.FC = () => {
             element={
               <ProtectedRoute>
                 <HomePage />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/form" 
+            element={
+              <ProtectedRoute>
+                <FormPage />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/form/:id" 
+            element={
+              <ProtectedRoute>
+                <FormPage />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/details/:id" 
+            element={
+              <ProtectedRoute>
+                <DetailsPage />
               </ProtectedRoute>
             } 
           />
